@@ -6,7 +6,7 @@
 #    By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/10 17:53:20 by kalee             #+#    #+#              #
-#    Updated: 2021/04/12 16:40:42 by kalee            ###   ########.fr        #
+#    Updated: 2021/04/12 19:37:30 by kalee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ CFLAGS =
 
 SRCDIR = srcs
 INCDIR = includes
-TESTDIR = test
 
 TARGET = bsq.out
 SOURCES = $(wildcard $(SRCDIR)/*.c)
