@@ -6,31 +6,35 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 22:03:10 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 01:17:43 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/13 01:55:26 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq_essential.h"
+#include <stdio.h>
 
-int	mapcheck_width(int fd, int width)
+int	mapcheck_width(int fd, int width, char *charset)
 {
 	char	buf;
 	int		rsize;
 	int		total_count;
+	int		cur_count;
 
 	rsize = read(fd, &buf, 1);
-	if (rsize == 0)
+	if (rsize == 0 || buf == '\n')
 		return (-1);
 	total_count = 1;
-	while (buf != '\n')
+	cur_count = width;
+	while (cur_count--)
 	{
 		rsize = read(fd, &buf, 1);
-		if (rsize == 0)
+		if (rsize == 0 || buf != charset[0] || buf != charset[1])
 			return (-1);
 		total_count++;
 	}
-	if (total_count - 1 != width)
-		return (-1);
+	rsize = read(fd, &buf, 1);
+	if (rsize == 0 || buf != '\n')
+		return (-1);	
 	return (0);
 }
 
@@ -43,17 +47,22 @@ int	valid_mapcheck(int fd, int width, int height, char *charset)
 	char	rsize;
 
 	rsize = read(fd, buf, 1);
-	if (rsize == 0)
+	//Exception Case
+	if (rsize == 0 || buf[0] == '\n')
 		return (-1);
+	if (width <= 0 || height <= 0)
+		return (-1);
+	//Command line Skip
 	while (buf[0] != '\n')
 	{
 		rsize = read(fd, buf, 1);
 		if (rsize == 0)
 			return (-1);
 	}
+	//Data Buffer
 	while (height--)
 	{
-		if( mapcheck_width(fd, width) == -1)
+		if( mapcheck_width(fd, width, charset) == -1)
 			return (-1);
 	}
 	return (0);
