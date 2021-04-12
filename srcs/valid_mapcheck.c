@@ -6,32 +6,33 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 22:03:10 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 02:00:33 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/13 02:25:27 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq_essential.h"
-#include <stdio.h>
 
 int	mapcheck_width(int fd, int width, char *charset)
 {
 	char	buf;
 	int		rsize;
-	int		total_count;
 	int		cur_count;
+	int		total_count;
 
 	rsize = read(fd, &buf, 1);
-	if (rsize == 0 || buf == '\n')
+	if (rsize == 0)
 		return (-1);
 	total_count = 1;
 	cur_count = width;
-	while (cur_count--)
+	while (buf != '\n')
 	{
 		rsize = read(fd, &buf, 1);
 		if (rsize == 0 || buf != charset[0] || buf != charset[1])
 			return (-1);
 		total_count++;
 	}
+	if (total_count - 1 != width)
+		return (-1);
 	return (0);
 }
 
