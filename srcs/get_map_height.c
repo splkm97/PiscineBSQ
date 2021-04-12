@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_mapheight.c                                    :+:      :+:    :+:   */
+/*   get_map_height.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 20:06:50 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 02:15:33 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/13 02:42:57 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_atoi(char *str)
 	return (sum);
 }
 
-int	setcheck(char *buf, char *charset, int size)
+int	setcheck(char *buf, int size)
 {
 	int i;
 
@@ -81,10 +81,10 @@ int	get_map_height(int fd, char *charset, int *endpoint)
 	charset[0] = buf[size - 3];
 	charset[1] = buf[size - 2];
 	charset[2] = buf[size - 1];
-	if (is_printable(charset[0]) && is_printable(charset[1]) && is_printable(charset[2]))
+	if (!(is_printable(charset[0]) && is_printable(charset[1]) && is_printable(charset[2])))
 		return (-1);
 	buf[size - 3] = '\0';
-	if (setcheck(buf, charset, size) == -1)
+	if (setcheck(buf, size) == -1)
 		return (-1);
 	*endpoint = size;
 	size = ft_atoi(buf);

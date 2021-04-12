@@ -6,28 +6,26 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 22:03:10 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 02:25:27 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/13 03:05:13 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq_essential.h"
 
-int	mapcheck_width(int fd, int width, char *charset)
+int	mapcheck_width(int fd, int width)
 {
 	char	buf;
 	int		rsize;
-	int		cur_count;
 	int		total_count;
 
 	rsize = read(fd, &buf, 1);
 	if (rsize == 0)
 		return (-1);
 	total_count = 1;
-	cur_count = width;
 	while (buf != '\n')
 	{
 		rsize = read(fd, &buf, 1);
-		if (rsize == 0 || buf != charset[0] || buf != charset[1])
+		if (rsize == 0)
 			return (-1);
 		total_count++;
 	}
@@ -36,7 +34,7 @@ int	mapcheck_width(int fd, int width, char *charset)
 	return (0);
 }
 
-int	valid_mapcheck(int fd, int width, int height, char *charset)
+int	valid_mapcheck(int fd, int width, int height)
 {
 	//ret value 
 	//error : -1
@@ -60,7 +58,7 @@ int	valid_mapcheck(int fd, int width, int height, char *charset)
 	//Data Buffer
 	while (height--)
 	{
-		if( mapcheck_width(fd, width, charset) == -1)
+		if( mapcheck_width(fd, width) == -1)
 			return (-1);
 	}
 	return (0);

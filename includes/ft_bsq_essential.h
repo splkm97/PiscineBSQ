@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 00:42:32 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 01:09:21 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/13 03:05:28 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct	s_entry
 int				**parse_map(char **raw_map, t_point *pts, char *charset);
 int				get_map_height(int fd, char *charset, int *endpoint);
 int				get_map_width(int fd, int idx);
-int				valid_mapcheck(int fd, int width, int height, char *charset);
+int				valid_mapcheck(int fd, int width, int height);
 char			**read_map(int fd, t_point *pts);
 void			cal_minmax(int **parsed_map, t_point *pts);
 void			fill_map_char(char **raw_map, t_point *pts, char *charset);

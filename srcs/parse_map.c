@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 16:32:56 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/12 18:06:38 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/13 02:32:21 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ int	**parse_map(char **raw_map, t_point *pts, char *charset)
 				result[y][x] = 1;
 			else if (raw_map[y][x] == charset[1])
 				result[y][x] = 0;
+			else
+			{
+				free_intmap(result, pts[0].y);
+				return (0);
+			}
 		}
 	}
 	return (result);
