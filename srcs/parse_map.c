@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_map.c                                         :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/11 22:28:00 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/12 17:22:19 by kalee            ###   ########.fr       */
+/*   Created: 2021/04/12 16:32:56 by kalee             #+#    #+#             */
+/*   Updated: 2021/04/12 17:20:56 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq_essential.h"
 
-void	fill_map_char(char **raw_map, t_point *pts, char *charset)
+int	**parse_map(char **raw_map, t_point *pts, char *charset)
 {
-	int i;
-	int j;
-
-	i = pts[1].y;
-	while (++i < pts[2].y)
+	int y;
+	int x;
+	int **result;
+	
+	result = gen_intmap(pts[0].x, pts[0].y);
+	y = -1;
+	while (++y < pts[0].y)
 	{
-		j = pts[1].x;
-		while (++j < pts[2].x)
-			raw_map[i][j] = charset[2];
+		x = -1;
+		while (++x < pts[0].x)
+		{
+			if (raw_map[y][x] == charset[0])
+				result[y][x] = 1;
+			else if (raw_map[y][x] == charset[1])
+				result[y][x] = 0;
+		}
 	}
+	return result;
 }

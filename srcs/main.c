@@ -6,14 +6,11 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 23:19:51 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/12 16:29:25 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/12 17:34:55 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define trs(x...) { printf("[%s:%d] %s = ", __func__, __LINE__, #x); printf("%s\n", x); }
-#define tri(x...) { printf("[%s:%d] %s = ", __func__, __LINE__, #x); printf("%d\n", x); }
 #include "ft_bsq_essential.h"
-#include <stdio.h>
 
 void	handle_error(char *msg)
 {
@@ -28,13 +25,22 @@ void	bsq_logic(int fd, char *charset, t_point *pts)
 	int		**parsed_map;
 
 	map = read_map(fd, pts);
-	print_map(map, pts[0].x, pts[0].y);
 	close(fd);
-	parse_map(map, pts, charset);
-	fill_map_char(map, pts, charset);
 	print_map(map, pts[0].x, pts[0].y);
-	free(map);
+	parsed_map = parse_map(map, pts, charset);
+	trs("parse_map ok");
+	cal_minmax(parsed_map, pts);
+	trs("cal_minmax ok");
+	fill_map_char(map, pts, charset);
+	trs("fill_map ok");
+	print_map(map, pts[0].x, pts[0].y);
+	trs("print_map ok");
+	free_intmap(parsed_map, pts[0].y);
+	trs("free parsed_map ok");
+	free_charmap(map, pts[0].y);
+	trs("free charmap ok");
 	free(pts);
+	trs("free pts ok");
 }
 
 int		main(int argc, char **argv)

@@ -6,7 +6,7 @@
 #    By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/10 17:53:20 by kalee             #+#    #+#              #
-#    Updated: 2021/04/12 16:30:49 by kalee            ###   ########.fr        #
+#    Updated: 2021/04/12 16:40:42 by kalee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,7 @@ INCDIR = includes
 TESTDIR = test
 
 TARGET = bsq.out
-TEST = test.out
-TESTSRC = $(addprefix $(TESTDIR)/, main.c)
-SOURCES = $(addprefix $(SRCDIR)/, fill_map.c ft_atoi.c ft_putstr.c parse_map.c read_map.c print_map.c get_map_width.c main.c)
+SOURCES = $(wildcard $(SRCDIR)/*.c)
 OBJECTS = $(SOURCES:.c=.o)
 
 all: $(TARGET)
@@ -29,15 +27,12 @@ all: $(TARGET)
 	$(CC) $(CFLAGS) -c -o $@ $< -I $(INCDIR)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $< $(OBJECTS)
-
-$(TEST): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $(OBJECTS) $(TESTSRC) -I $(INCDIR)
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
 	rm -f $(OBJECTS)
 
 fclean: clean
-	rm -f $(TARGET) $(TEST)
+	rm -f $(TARGET)
 
 re: fclean all
