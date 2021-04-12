@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 22:03:10 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 03:25:32 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/13 03:38:21 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,8 @@ int	valid_mapcheck(int fd, int width, int height)
 		if (mapcheck_width(fd, width) == -1)
 			return (-1);
 	}
+	rsize = read(fd, buf, 1);
+	if (rsize != 0)
+		return (-1);
 	return (0);
 }
