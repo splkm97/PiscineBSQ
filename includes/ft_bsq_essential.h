@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 00:42:32 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/12 17:28:34 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/12 17:55:32 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void			print_map(char **filled_map, int xsize, int ysize);
 void			handle_error(char *msg);
 void			ft_putstr(char *str);
 int				**gen_intmap(int width, int height);
+char			**gen_charmap(int width, int height);
 void			free_intmap(int **map, int height);
 void			free_charmap(char **map, int height);
 

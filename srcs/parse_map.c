@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 16:32:56 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/12 17:20:56 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/12 18:06:38 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	**parse_map(char **raw_map, t_point *pts, char *charset)
 	int y;
 	int x;
 	int **result;
-	
+
 	result = gen_intmap(pts[0].x, pts[0].y);
 	y = -1;
 	while (++y < pts[0].y)
@@ -31,5 +31,5 @@ int	**parse_map(char **raw_map, t_point *pts, char *charset)
 				result[y][x] = 0;
 		}
 	}
-	return result;
+	return (result);
 }

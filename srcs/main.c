@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 23:19:51 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/12 17:34:55 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/12 18:06:05 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,13 @@ void	bsq_logic(int fd, char *charset, t_point *pts)
 
 	map = read_map(fd, pts);
 	close(fd);
-	print_map(map, pts[0].x, pts[0].y);
 	parsed_map = parse_map(map, pts, charset);
-	trs("parse_map ok");
 	cal_minmax(parsed_map, pts);
-	trs("cal_minmax ok");
 	fill_map_char(map, pts, charset);
-	trs("fill_map ok");
 	print_map(map, pts[0].x, pts[0].y);
-	trs("print_map ok");
 	free_intmap(parsed_map, pts[0].y);
-	trs("free parsed_map ok");
 	free_charmap(map, pts[0].y);
-	trs("free charmap ok");
 	free(pts);
-	trs("free pts ok");
 }
 
 int		main(int argc, char **argv)

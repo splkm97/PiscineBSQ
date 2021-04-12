@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 16:37:33 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/12 17:32:51 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/12 18:01:34 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	cal_minmax(int **parsed_map, t_point *pts)
 			}
 		}
 	}
-	pts[1].x = max_point.x - max_val - 1;
-	pts[1].y = max_point.y - max_val - 1;
+	pts[1].x = max_point.x - max_val;
+	pts[1].y = max_point.y - max_val;
 	pts[2].x = max_point.x;
 	pts[2].y = max_point.y;
 }
