@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 22:03:10 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 01:13:10 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/13 01:17:43 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	mapcheck_width(int fd, int width)
 	if (rsize == 0)
 		return (-1);
 	total_count = 1;
-	while (buf[0] != '\n')
+	while (buf != '\n')
 	{
 		rsize = read(fd, &buf, 1);
 		if (rsize == 0)
@@ -34,26 +34,8 @@ int	mapcheck_width(int fd, int width)
 	return (0);
 }
 
-int	valid_mapcheck(int fd, int width, int height)
+int	valid_mapcheck(int fd, int width, int height, char *charset)
 {
-	//char	buf[2];
-	//int		rsize;
-
-	//rsize = read(fd, buf, 1);
-	//while (buf[0] != '\n')
-	//{
-	//	rsize = read(fd, buf, 1);
-	//	if (rsize == 0)
-	//		return (0);
-	//}
-	//while (height != 0)
-	//{
-	//	//TODO map error check
-	//	height--;
-	//}
-	//rsize = read(fd, buf, 1);
-	//if (rsize == 0)
-	//	return (0);
 	//ret value 
 	//error : -1
 	//ok	:  0
