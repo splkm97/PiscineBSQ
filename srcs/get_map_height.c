@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 20:06:50 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 02:42:57 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/13 03:24:37 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int	get_map_height(int fd, char *charset, int *endpoint)
 	charset[0] = buf[size - 3];
 	charset[1] = buf[size - 2];
 	charset[2] = buf[size - 1];
-	if (!(is_printable(charset[0]) && is_printable(charset[1]) && is_printable(charset[2])))
+	if (!(is_printable(charset[0]) && is_printable(charset[1])
+				&& is_printable(charset[2])))
 		return (-1);
 	buf[size - 3] = '\0';
 	if (setcheck(buf, size) == -1)
