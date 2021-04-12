@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 00:42:32 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 03:05:28 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/13 03:34:17 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <stdio.h>
 
 # include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
 # include <fcntl.h>
 # include <stdlib.h>
 
@@ -38,16 +36,19 @@ typedef struct	s_entry
 	int		height;
 }				t_entry;
 
-int				**parse_map(char **raw_map, t_point *pts, char *charset);
+void			ft_putstr(char *str);
+
+void			stdin_case(void);
 int				get_map_height(int fd, char *charset, int *endpoint);
 int				get_map_width(int fd, int idx);
 int				valid_mapcheck(int fd, int width, int height);
+
 char			**read_map(int fd, t_point *pts);
+int				**parse_map(char **raw_map, t_point *pts, char *charset);
 void			cal_minmax(int **parsed_map, t_point *pts);
 void			fill_map_char(char **raw_map, t_point *pts, char *charset);
 void			print_map(char **filled_map, int xsize, int ysize);
-void			handle_error(char *msg);
-void			ft_putstr(char *str);
+
 int				**gen_intmap(int width, int height);
 char			**gen_charmap(int width, int height);
 void			free_intmap(int **map, int height);
