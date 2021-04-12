@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 00:42:32 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 03:34:17 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/13 05:10:11 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct	s_entry
 
 void			ft_putstr(char *str);
 
-void			stdin_case(void);
+int				stdin_case(void);
 int				get_map_height(int fd, char *charset, int *endpoint);
 int				get_map_width(int fd, int idx);
 int				valid_mapcheck(int fd, int width, int height);
