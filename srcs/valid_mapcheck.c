@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 22:03:10 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 00:57:13 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/13 01:13:10 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	mapcheck_width(int fd, int width)
 	int		rsize;
 	int		total_count;
 
-	rsize = read(fd, buf, 1);
+	rsize = read(fd, &buf, 1);
 	if (rsize == 0)
 		return (-1);
 	total_count = 1;
 	while (buf[0] != '\n')
 	{
-		rsize = read(fd, buf, 1);
+		rsize = read(fd, &buf, 1);
 		if (rsize == 0)
 			return (-1);
 		total_count++;
