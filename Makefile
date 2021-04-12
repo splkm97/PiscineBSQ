@@ -6,7 +6,7 @@
 #    By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/10 17:53:20 by kalee             #+#    #+#              #
-#    Updated: 2021/04/11 22:31:39 by kalee            ###   ########.fr        #
+#    Updated: 2021/04/12 16:30:49 by kalee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ TESTDIR = test
 TARGET = bsq.out
 TEST = test.out
 TESTSRC = $(addprefix $(TESTDIR)/, main.c)
-SOURCES = $(addprefix $(SRCDIR)/, fill_map.c ft_atoi.c ft_putstr.c parse_map.c read_map.c print_map.c get_map_width.c cal_minmax.c main.c)
+SOURCES = $(addprefix $(SRCDIR)/, fill_map.c ft_atoi.c ft_putstr.c parse_map.c read_map.c print_map.c get_map_width.c main.c)
 OBJECTS = $(SOURCES:.c=.o)
 
 all: $(TARGET)
