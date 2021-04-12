@@ -6,16 +6,15 @@
 #    By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/10 17:53:20 by kalee             #+#    #+#              #
-#    Updated: 2021/04/13 00:56:40 by kalee            ###   ########.fr        #
+#    Updated: 2021/04/13 01:19:37 by kalee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = 
 
 SRCDIR = srcs
 INCDIR = includes
-TESTDIR = test
 
 TARGET = bsq.out
 TEST = test.out
@@ -23,7 +22,7 @@ TEST = test.out
 SOURCES = $(wildcard $(SRCDIR)/*.c)
 OBJECTS = $(SOURCES:.c=.o)
 
-TESTSRC = $(wildcard $(TESTDIR)/*.c)
+TESTSRC = $(wildcard $(SRCDIR)/*.c)
 TESTOBJ = $(TESTSRC:.c=.o)
 
 all: $(TARGET)
