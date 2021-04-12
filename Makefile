@@ -6,12 +6,12 @@
 #    By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/10 17:53:20 by kalee             #+#    #+#              #
-#    Updated: 2021/04/12 19:37:30 by kalee            ###   ########.fr        #
+#    Updated: 2021/04/12 22:30:45 by kalee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = 
+CFLAGS = -Wall -Wextra -Werror
 
 SRCDIR = srcs
 INCDIR = includes
