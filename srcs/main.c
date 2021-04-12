@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 23:19:51 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 00:38:31 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/13 01:08:09 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		io_process(char *filename, char *charset, t_point *pts)
 	pts[0].x = get_map_width(fd, idx);
 	close(fd);
 	fd = open(filename, O_RDONLY);
-	flag = valid_mapcheck(fd, pts[0].x, pts[0].y);
+	flag = valid_mapcheck(fd, pts[0].x, pts[0].y, charset);
 	close(fd);
 	if (flag == -1)
 		return (-1);
