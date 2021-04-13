@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/13 06:21:44 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/13 17:07:02 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		stdin_case(void)
 
 	rsize = read(0, &buf, 1);
 	if (rsize == 0 || buf == '\n')
-		return (-1)
+		return (-1);
 	cur_index = 0;
 	while (buf != '\n')
 	{
