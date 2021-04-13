@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 00:42:32 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 03:52:15 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 03:59:38 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void			ft_putstr(char *str);
 int				ft_atoi(char *str);
 int				is_numeric(char ch);
 int				is_printable(char ch);
-int				setcheck(char *buf, int size);
+int				setcheck(char *buf);
 
 int				stdin_case(void);
 int				get_map_height(int fd, char *charset, int *endpoint);
