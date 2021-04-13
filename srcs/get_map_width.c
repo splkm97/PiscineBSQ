@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 05:24:36 by alee              #+#    #+#             */
-/*   Updated: 2021/04/12 16:26:28 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 05:33:03 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		is_newline(char c)
 
 int		get_map_width(int fd, int idx)
 {
-	char	buffer[128];
+	char	buffer[1024];	//TODO: we need dynamic buffer or smthing
 	int		cur_index;
 	int		read_count;
 	int		width_count;

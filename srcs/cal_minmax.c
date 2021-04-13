@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 16:37:33 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/12 18:01:34 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 05:24:02 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,36 @@ int		check_around(int **map, int y, int x)
 	return (min_val + 1);
 }
 
-void	cal_minmax(int **parsed_map, t_point *pts)
+void	update(t_point *point, int x, int y)
 {
-	int		y;
-	int		x;
-	int		max_val;
+	point->x = x;
+	point->y = y;
+}
+
+void	singleline_process(int **parsed_map, t_point *pts)
+{
+	int i;
+
+	i = -1;
+	while (++i < pts[0].x)
+	{
+		if (parsed_map[0][i] == 1)
+		{
+			update(&pts[1], i, 0);
+			update(&pts[2], i, 0);
+			break ;
+		}
+	}
+}
+
+void	reparse(int **parsed_map, t_point *pts)
+{
+	int	x;
+	int	y;
+	int	max_val;
 	t_point	max_point;
 
 	y = 0;
-	max_val = 0;
 	while (++y < pts[0].y)
 	{
 		x = -1;
@@ -46,13 +67,20 @@ void	cal_minmax(int **parsed_map, t_point *pts)
 			if (parsed_map[y][x] > max_val)
 			{
 				max_val = parsed_map[y][x];
-				max_point.x = x;
-				max_point.y = y;
+				update(&max_point, x, y);
 			}
 		}
 	}
-	pts[1].x = max_point.x - max_val;
-	pts[1].y = max_point.y - max_val;
-	pts[2].x = max_point.x;
-	pts[2].y = max_point.y;
+	update(&pts[1], max_point.x - max_val, max_point.y - max_val);
+	update(&pts[2], max_point.x, max_point.y);
+}
+
+void	cal_minmax(int **parsed_map, t_point *pts)
+{
+	if (pts[0].y == 1)
+	{
+		singleline_process(parsed_map, pts);
+		return ;
+	}
+	reparse(parsed_map, pts);
 }

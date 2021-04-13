@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/14 04:37:30 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/14 04:43:27 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		extract_charset(char *charset, char* dest_buffer, int newline_index)
 	}
 	//overlap check
 	if (charset[0] == charset[1] || charset[1] == charset[2] || charset[2] == charset[0])
-		return (-1)
+		return (-1);
 	return (0);
 }
 
