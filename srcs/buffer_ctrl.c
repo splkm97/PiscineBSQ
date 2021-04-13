@@ -6,13 +6,13 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 03:05:52 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 03:55:35 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 04:21:27 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq_essential.h"
 
-void	ft_strncpy(char *dest, char*src, int size)
+void	ft_strncpy(char *dest, char *src, int size)
 {
 	int i;
 
