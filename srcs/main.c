@@ -6,11 +6,12 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 23:19:51 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 17:09:36 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/13 20:51:08 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq_essential.h"
+#include <time.h>
 
 int		bsq_logic(char *filename, char *charset, t_point *pts)
 {
@@ -59,6 +60,7 @@ int		io_process(char *filename, char *charset, t_point *pts)
 
 int		main(int argc, char **argv)
 {
+	int start, end;//
 	int		i;
 	int		flag;
 	char	charset[3];
@@ -69,6 +71,7 @@ int		main(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 	{
+		start = clock();//
 		pts = (t_point *)malloc(3 * sizeof(t_point));
 		flag = io_process(argv[i], charset, pts);
 		if (flag == -1)
@@ -82,6 +85,8 @@ int		main(int argc, char **argv)
 			ft_putstr("map error\n");
 			continue;
 		}
+		end = clock();//
+		tri(end-start);//
 	}
 	return (0);
 }
