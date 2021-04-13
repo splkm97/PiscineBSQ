@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 03:05:52 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 03:50:59 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 03:55:35 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,17 @@ char	*expand_buf(char *buf, int *size)
 char	*read_line(char *buf, int *size, int *last_idx)
 {
 	int		i;
-	char	*result;
 	char	ch;
 
-	result = buf;
 	read(0, &ch, 1);
 	i = -1;
 	while (ch != '\n')
 	{
 		if (++i + 1 == *size)
-			result = expand_buf(buf, size);
-		result[i] = ch;
+			buf = expand_buf(buf, size);
+		buf[i] = ch;
 		read(0, &ch, 1);
 	}
 	*last_idx = ++i;
-	return (result);
+	return (buf);
 }
