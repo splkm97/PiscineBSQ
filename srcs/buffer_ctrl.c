@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 03:05:52 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 03:06:30 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 03:50:59 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,32 @@ char	*expand_buf(char *buf, int *size)
 	char *result;
 
 	if (!(result = (char *)malloc(*size << 1)))
+	{
+		ft_putstr("malloc error\n");
 		exit(0);
+	}
 	ft_strncpy(result, buf, *size);
 	*size <<= 1;
 	free(buf);
+	return (result);
+}
+
+char	*read_line(char *buf, int *size, int *last_idx)
+{
+	int		i;
+	char	*result;
+	char	ch;
+
+	result = buf;
+	read(0, &ch, 1);
+	i = -1;
+	while (ch != '\n')
+	{
+		if (++i + 1 == *size)
+			result = expand_buf(buf, size);
+		result[i] = ch;
+		read(0, &ch, 1);
+	}
+	*last_idx = ++i;
 	return (result);
 }
