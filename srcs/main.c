@@ -6,11 +6,12 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 23:19:51 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 03:57:04 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/13 20:51:08 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq_essential.h"
+#include <time.h>
 
 int		bsq_logic(char *filename, char *charset, t_point *pts)
 {
@@ -20,12 +21,8 @@ int		bsq_logic(char *filename, char *charset, t_point *pts)
 
 	fd = open(filename, O_RDONLY);
 	map = read_map(fd, pts);
-	tri(pts[0].x);
-	tri(pts[0].y);
 	close(fd);
 	parsed_map = parse_map(map, pts, charset);
-	tri(pts[0].x);
-	tri(pts[0].y);
 	if (parsed_map == 0)
 		return (-1);
 	cal_minmax(parsed_map, pts);
@@ -53,12 +50,8 @@ int		io_process(char *filename, char *charset, t_point *pts)
 	fd = open(filename, O_RDONLY);
 	pts[0].x = get_map_width(fd, idx);
 	close(fd);
-	tri(pts[0].x);
-	tri(pts[0].y);
 	fd = open(filename, O_RDONLY);
 	flag = valid_mapcheck(fd, pts[0].x, pts[0].y);
-	tri(pts[0].x);
-	tri(pts[0].y);
 	close(fd);
 	if (flag == -1)
 		return (-1);
@@ -67,6 +60,7 @@ int		io_process(char *filename, char *charset, t_point *pts)
 
 int		main(int argc, char **argv)
 {
+	int start, end;//
 	int		i;
 	int		flag;
 	char	charset[3];
@@ -77,6 +71,7 @@ int		main(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 	{
+		start = clock();//
 		pts = (t_point *)malloc(3 * sizeof(t_point));
 		flag = io_process(argv[i], charset, pts);
 		if (flag == -1)
@@ -90,6 +85,8 @@ int		main(int argc, char **argv)
 			ft_putstr("map error\n");
 			continue;
 		}
+		end = clock();//
+		tri(end-start);//
 	}
 	return (0);
 }

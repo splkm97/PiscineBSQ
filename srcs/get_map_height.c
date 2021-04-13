@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 20:06:50 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/13 03:24:37 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 03:59:41 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_atoi(char *str)
 	return (sum);
 }
 
-int	setcheck(char *buf, int size)
+int	setcheck(char *buf)
 {
 	int i;
 
@@ -85,7 +85,7 @@ int	get_map_height(int fd, char *charset, int *endpoint)
 				&& is_printable(charset[2])))
 		return (-1);
 	buf[size - 3] = '\0';
-	if (setcheck(buf, size) == -1)
+	if (setcheck(buf) == -1)
 		return (-1);
 	*endpoint = size;
 	size = ft_atoi(buf);

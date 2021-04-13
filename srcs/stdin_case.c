@@ -6,7 +6,11 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/04/14 04:01:14 by alee             ###   ########.fr       */
+=======
+/*   Updated: 2021/04/14 03:06:37 by kalee            ###   ########.fr       */
+>>>>>>> d444b68ce828646ff4f59cbccdcb0977d9b0ec5c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +57,28 @@ int		stdin_case(void)
 	//Comfirm hegith value [numeric]
 	
 
+<<<<<<< HEAD
+=======
+	rsize = read(0, &buf, 1);
+	if (rsize == 0 || buf == '\n')
+		return (-1);
+	cur_index = 0;
+	while (buf != '\n')
+	{
+		if (cur_index >= sizeof(buffer) -1)
+			return (-1);
+		buffer[cur_index++] = buf;
+		rsize = read(0, &buf, 1);
+		if (rsize == 0)
+			return (-1);
+	}
+	buffer[cur_index] = '\0';
+	charset[0] = buffer[cur_index - 3];
+	charset[1] = buffer[cur_index - 2];
+	charset[2] = buffer[cur_index - 1];
+	buffer[cur_index - 3] = '\0';
+	height = ft_atoi(buffer);
+	//TODO - Map Checking
+>>>>>>> d444b68ce828646ff4f59cbccdcb0977d9b0ec5c
 	return (0);
 }
