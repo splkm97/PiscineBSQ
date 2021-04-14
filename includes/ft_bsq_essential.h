@@ -6,16 +6,12 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 00:42:32 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/15 03:53:59 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/15 04:41:29 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_BSQ_ESSENTIAL_H
 # define FT_BSQ_ESSENTIAL_H
-
-# define trs(x...) { printf("[%s:%d] %s = ", __func__, __LINE__, #x); printf("%s\n", x); }
-# define tri(x...) { printf("[%s:%d] %s = ", __func__, __LINE__, #x); printf("%d\n", x); }
-# include <stdio.h>
 
 # include <unistd.h>
 # include <fcntl.h>
