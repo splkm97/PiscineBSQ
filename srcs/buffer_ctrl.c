@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 03:05:52 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/15 03:59:29 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/15 04:50:34 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*read_line(char *buf, int *size, int *last_idx)
 {
 	int		i;
 	char	ch;
-	
+
 	read(0, &ch, 1);
 	i = 0;
 	while (ch != '\n')
