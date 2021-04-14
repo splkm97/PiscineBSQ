@@ -6,11 +6,23 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 03:05:52 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 04:21:27 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 17:21:44 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq_essential.h"
+
+void	ft_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
 
 void	ft_strncpy(char *dest, char *src, int size)
 {
