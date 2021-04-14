@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 03:05:52 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/15 02:04:53 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/15 03:59:29 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,26 @@ void	ft_strncpy(char *dest, char *src, int size)
 	int i;
 
 	i = 0;
-	trs("strncpy() called")
 	while (i < size)
 	{
-		tri(i);
 		dest[i] = src[i];
 		i++;
 	}
-	trs("strncpy() ok")
 }
 
 char	*expand_buf(char *buf, int *size)
 {
 	char *result;
 
-	trs("expand_buf() called")
 	result = (char *)malloc(sizeof(char) * (*size << 1));
 	if (!result)
 	{
 		ft_putstr("malloc error\n");
 		exit(0);
 	}
-	tri(*size)
 	ft_strncpy(result, buf, *size);
-	trs("strncpy() ok")
 	*size <<= 1;
 	free(buf);
-	trs("expand_buf() end")
 	return (result);
 }
 
@@ -51,10 +44,9 @@ char	*read_line(char *buf, int *size, int *last_idx)
 {
 	int		i;
 	char	ch;
-
-	trs("read_line() called")
+	
 	read(0, &ch, 1);
-	i = 1;
+	i = 0;
 	while (ch != '\n')
 	{
 		if (i + 1 == *size)
@@ -64,7 +56,6 @@ char	*read_line(char *buf, int *size, int *last_idx)
 		i++;
 	}
 	*last_idx = ++i;
-	trs("read_line ok")
 	return (buf);
 }
 

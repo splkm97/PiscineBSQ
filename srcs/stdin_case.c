@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/15 02:16:55 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/15 03:58:20 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 int		extract_charset(char *charset, char* dest_buffer, int newline_index)
 {
 	int cur_index;
-
 	cur_index = 0;
-	charset[0] = dest_buffer[newline_index - 3];
-	charset[1] = dest_buffer[newline_index - 2];
-	charset[2] = dest_buffer[newline_index - 1];
-
-	//non printable check	
+	charset[0] = dest_buffer[newline_index - 4];
+	charset[1] = dest_buffer[newline_index - 3];
+	charset[2] = dest_buffer[newline_index - 2];
+	
+	//non printable check
 	while (cur_index < 3)
 	{
 		if (is_printable(charset[cur_index]) == 0)
 			return (-1);
+		cur_index++;
 	}
 	//overlap check
 	if (charset[0] == charset[1] || charset[1] == charset[2] || charset[2] == charset[0])
@@ -35,8 +35,7 @@ int		extract_charset(char *charset, char* dest_buffer, int newline_index)
 
 int		extract_height(char *dest_buffer, int newline_index, int *height)
 {
-	dest_buffer[newline_index - 3] = '\0';
-
+	dest_buffer[newline_index - 4] = '\0';
 	//height numeric check
 	if (setcheck(dest_buffer) == -1)
 		return (-1);
@@ -77,11 +76,6 @@ void	buffer_alloc(char **alloc_buffer, int *size)
 	return ;
 }
 
-int		extract_proc(char* buffer, char* charset, int *newline_index, int *height)
-{
-	return (-1);
-}
-
 int		stdin_case(char* charset, t_point* pts)
 {
 	char	*buffer;
@@ -90,28 +84,18 @@ int		stdin_case(char* charset, t_point* pts)
 	int		height;
 	char	**map_buff;
 	
-	trs("!")
 	buffer_alloc(&buffer, &buffer_size);
 	buffer = read_line(buffer, &buffer_size, &newline_index);
-	//extract proc
-	//if(extract_proc(buffer, charset, &newline_index, &height) == 0)
-	//	return (-1);
-	trs("!!")
-	if (extract_charset(charset, buffer, newline_index) == -1
-			|| extract_height(buffer, newline_index, &height) == -1)
+	if (extract_charset(charset, buffer, newline_index) || extract_height(buffer, newline_index, &height))
 	{
 		free(buffer);
 		ft_putstr("map error\n");
 		exit(0);
 	}
 	free(buffer);
-	trs("!!!")
 	buffer_alloc(&buffer, &buffer_size);
-	trs("!!!!")
 	buffer = read_line(buffer, &buffer_size, &newline_index);
-	trs("!!!!!")
 	map_buff = gen_charmap(newline_index, height);
-	trs("!!!!!!")
 	if (map_cpy(map_buff, buffer, newline_index, height) == -1)
 	{
 		free_charmap(map_buff, height);
@@ -119,10 +103,9 @@ int		stdin_case(char* charset, t_point* pts)
 		ft_putstr("map error\n");
 		exit(0);
 	}
-	trs("123")
 	pts = (t_point*)malloc(sizeof(t_point) * 3);
-	trs("1234")
+	pts[0].x = newline_index - 1;
+	pts[0].y = height;
 	after_read(map_buff, charset, pts);
-	trs("12345")
 	return (0);
 }

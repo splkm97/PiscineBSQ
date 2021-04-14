@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 19:10:56 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 19:18:19 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/15 03:55:22 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 int		after_read(char **raw_map, char *charset, t_point *pts)
 {
 	int		**parsed_map;
-
 	parsed_map = parse_map(raw_map, pts, charset);
 	if (parsed_map == 0)
+	{
+		printf("parsed error \n");
 		return (-1);
+	}
 	cal_minmax(parsed_map, pts);
 	fill_map_char(raw_map, pts, charset);
 	print_map(raw_map, pts[0].x, pts[0].y);
