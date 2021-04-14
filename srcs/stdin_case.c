@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/14 18:13:54 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/14 18:16:47 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ int		map_cpy(char **dest_buf, char* src_buf, int width, int height)
 	cur_index = 0;
 	ft_strncpy(dest_buf[cur_index++], src_buf, width);
 	while (cur_index < height)
-	{
-		
+	{		
 		cur_index++;
 	}
 }
@@ -84,7 +83,7 @@ int		stdin_case(void)
 	//Read Map Data & Expand Buffer
 	buffer_size = 2;
 	buffer = (char*)malloc(buffer_size);
-	buffer = read_line(buffer, &buff_size, &newline_index);
+	buffer = read_line(buffer, &buffer_size, &newline_index);
 	map_buff = gen_charmap(newline_index, height);
 	map_cpy(map_buff, buffer, newline_index, height);
 	
