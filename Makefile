@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS =
+CFLAGS = -Wall -Wextra -Werror
 
 SRCDIR = srcs
 INCDIR = includes

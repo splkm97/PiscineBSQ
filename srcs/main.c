@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 23:19:51 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/15 04:45:56 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/15 05:17:23 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		bsq_logic(char *filename, char *charset, t_point *pts)
 	print_map(map, pts[0].x, pts[0].y);
 	free_intmap(parsed_map, pts[0].y);
 	free_charmap(map, pts[0].y);
-	free(pts);
 	return (0);
 }
 
@@ -62,14 +61,13 @@ int		main(int argc, char **argv)
 	int		i;
 	int		flag;
 	char	charset[3];
-	t_point	*pts;
+	t_point	pts[3];
 
 	if (argc == 1)
 		stdin_case(charset, pts);
 	i = 0;
 	while (++i < argc)
 	{
-		pts = (t_point *)malloc(3 * sizeof(t_point));
 		flag = io_process(argv[i], charset, pts);
 		if (flag == -1)
 		{
