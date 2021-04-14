@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 00:42:32 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 18:22:29 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 18:35:07 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int				is_numeric(char ch);
 int				is_printable(char ch);
 int				setcheck(char *buf);
 char			*read_line(char *buf, int *size, int *last_idx);
+char			*read_line_file(int fd, char *buf, int *size, int *last_idx);
 
 int				stdin_case(void);
 int				get_map_height(int fd, char *charset, int *endpoint);

@@ -6,11 +6,23 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 05:15:34 by alee              #+#    #+#             */
-/*   Updated: 2021/04/11 23:05:50 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 18:38:30 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+void	ft_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
 
 void	print_map(char **filled_map, int xsize, int ysize)
 {

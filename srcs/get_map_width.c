@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 05:24:36 by alee              #+#    #+#             */
-/*   Updated: 2021/04/14 18:12:42 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 18:33:48 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int		get_map_width(int fd, int idx)
 
 	size = 2;
 	buffer = (char *)malloc(size * sizeof(char));
-	buffer = read_line(buffer, &size, &width);
+	buffer = read_line_file(fd, buffer, &size, &width);
+	buffer = read_line_file(fd, buffer, &size, &width);
+	free(buffer);
 	return (width);
 }
