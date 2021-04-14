@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 00:42:32 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 18:35:07 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/15 00:56:18 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int				valid_mapcheck(int fd, int width, int height);
 
 char			**read_map(int fd, t_point *pts);
 int				**parse_map(char **raw_map, t_point *pts, char *charset);
+int				after_read(char **map, char *charset, t_point *pts);
 void			cal_minmax(int **parsed_map, t_point *pts);
 void			fill_map_char(char **raw_map, t_point *pts, char *charset);
 void			print_map(char **filled_map, int xsize, int ysize);
