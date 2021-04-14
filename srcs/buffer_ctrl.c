@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 03:05:52 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/15 01:47:05 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/15 02:04:53 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*expand_buf(char *buf, int *size)
 	char *result;
 
 	trs("expand_buf() called")
-	result = (char *)malloc(sizeof(char) * (*size << 1 + 1));
+	result = (char *)malloc(sizeof(char) * (*size << 1));
 	if (!result)
 	{
 		ft_putstr("malloc error\n");

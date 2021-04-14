@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/15 01:13:08 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/15 02:16:55 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ int		map_cpy(char **dest_buf, char* src_buf, int width, int height)
 	return (0);
 }
 
-void	buffer_alloc(char *alloc_buffer, int *size)
+void	buffer_alloc(char **alloc_buffer, int *size)
 {
 	*size = 2;
-	alloc_buffer = (char*)malloc(*size);
+	*alloc_buffer = (char*)malloc(*size);
 	return ;
 }
 
@@ -91,7 +91,7 @@ int		stdin_case(char* charset, t_point* pts)
 	char	**map_buff;
 	
 	trs("!")
-	buffer_alloc(buffer, &buffer_size);
+	buffer_alloc(&buffer, &buffer_size);
 	buffer = read_line(buffer, &buffer_size, &newline_index);
 	//extract proc
 	//if(extract_proc(buffer, charset, &newline_index, &height) == 0)
@@ -106,7 +106,7 @@ int		stdin_case(char* charset, t_point* pts)
 	}
 	free(buffer);
 	trs("!!!")
-	buffer_alloc(buffer, &buffer_size);
+	buffer_alloc(&buffer, &buffer_size);
 	trs("!!!!")
 	buffer = read_line(buffer, &buffer_size, &newline_index);
 	trs("!!!!!")
