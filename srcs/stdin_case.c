@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/15 04:59:49 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/15 05:40:31 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,36 +74,49 @@ void	buffer_alloc(char **alloc_buffer, int *size)
 	return ;
 }
 
+void	set_pts(t_point **alloc_pts, int index, int width, int line)
+{
+	*alloc_pts = (t_point*)malloc(sizeof(t_point) * 3);
+	alloc_pts[index]->x = width;
+	alloc_pts[index]->y = line;
+	return ;
+}
+
+void	check_data_field(char *charset, char *buffer, int w_idx, int *line)
+{
+	if (get_charset(charset, buffer, w_idx) || get_height(buffer, w_idx, line))
+	{
+		free(buffer);
+		ft_putstr("map error\n");
+		exit(0);
+	}
+	return ;
+}
+
 int		stdin_case(char *charset, t_point *pts)
 {
 	char	*buffer;
 	int		buffer_size;
-	int		w_index;
-	int		height;
+	int		w_idx;
+	int		line;
 	char	**map_buff;
 
+	w_idx = 0;
 	buffer_alloc(&buffer, &buffer_size);
-	buffer = read_line(buffer, &buffer_size, &w_index);
-	if (get_charset(charset, buffer, w_index) || get_height(buffer, w_index, &height))
-	{
-		free(buffer);
-		ft_putstr("map error\n");
-		exit(0);
-	}
+	buffer = read_line(buffer, &buffer_size, &w_idx);
+	check_data_field(charset, buffer, w_idx, &line);
 	free(buffer);
 	buffer_alloc(&buffer, &buffer_size);
-	buffer = read_line(buffer, &buffer_size, &w_index);
-	map_buff = gen_charmap(w_index, height);
-	if (map_cpy(map_buff, buffer, w_index, height) == -1)
+	buffer = read_line(buffer, &buffer_size, &w_idx);
+	map_buff = gen_charmap(w_idx, line);
+	if (map_cpy(map_buff, buffer, w_idx, line) == -1)
 	{
-		free_charmap(map_buff, height);
+		free_charmap(map_buff, line);
 		free(buffer);
 		ft_putstr("map error\n");
 		exit(0);
 	}
-	pts = (t_point*)malloc(sizeof(t_point) * 3);
-	pts[0].x = w_index - 1;
-	pts[0].y = height;
+	set_pts(&pts, 0, w_idx - 1, line);
 	after_read(map_buff, charset, pts);
 	return (0);
 }
