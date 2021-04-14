@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 00:42:32 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 18:17:37 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/14 18:22:29 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ char			**gen_charmap(int width, int height);
 void			free_intmap(int **map, int height);
 void			free_charmap(char **map, int height);
 
-char			*ft_strncpy(char *dest, char *src, int size);
+void			ft_strncpy(char *dest, char *src, int size);
 
 #endif
