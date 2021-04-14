@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/15 00:54:09 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/15 01:13:08 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,14 @@ int		stdin_case(char* charset, t_point* pts)
 	int		newline_index;
 	int		height;
 	char	**map_buff;
-
+	
+	trs("!")
 	buffer_alloc(buffer, &buffer_size);
 	buffer = read_line(buffer, &buffer_size, &newline_index);
 	//extract proc
 	//if(extract_proc(buffer, charset, &newline_index, &height) == 0)
 	//	return (-1);
-
+	trs("!!")
 	if (extract_charset(charset, buffer, newline_index) == -1
 			|| extract_height(buffer, newline_index, &height) == -1)
 	{
@@ -104,9 +105,13 @@ int		stdin_case(char* charset, t_point* pts)
 		exit(0);
 	}
 	free(buffer);
+	trs("!!!")
 	buffer_alloc(buffer, &buffer_size);
+	trs("!!!!")
 	buffer = read_line(buffer, &buffer_size, &newline_index);
+	trs("!!!!!")
 	map_buff = gen_charmap(newline_index, height);
+	trs("!!!!!!")
 	if (map_cpy(map_buff, buffer, newline_index, height) == -1)
 	{
 		free_charmap(map_buff, height);
@@ -114,7 +119,10 @@ int		stdin_case(char* charset, t_point* pts)
 		ft_putstr("map error\n");
 		exit(0);
 	}
+	trs("123")
 	pts = (t_point*)malloc(sizeof(t_point) * 3);
+	trs("1234")
 	after_read(map_buff, charset, pts);
+	trs("12345")
 	return (0);
 }
