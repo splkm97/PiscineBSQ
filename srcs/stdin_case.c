@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/14 19:06:00 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/15 00:46:41 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,33 @@ int		map_cpy(char **dest_buf, char* src_buf, int width, int height)
 	return (0);
 }
 
-int		stdin_case(void)
+void	buffer_alloc(char *alloc_buffer, int *size)
+{
+	*size = 2;
+	alloc_buffer = (char*)malloc(*size);
+	return ;
+}
+
+int		extract_proc(char* buffer, char* charset, int *newline_index, int *height)
+{
+	if(extract_charset(charset, buffer, newline_index) == -1)
+		return (-1);
+}
+
+int		stdin_case(char* charset, t_point* pts)
 {
 	char	*buffer;
 	int		buffer_size;
-	char	charset[3];
 	int		newline_index;
 	int		height;
 	char	**map_buff;
 
-	buffer_size = 2;
-	buffer = (char*)malloc(buffer_size);
-	//Read Command Line & Expand Buffer
+	buffer_alloc(buffer, &buffer_size);
 	buffer = read_line(buffer, &buffer_size, &newline_index);
-	//Extract Charset / Extract Height
+	//extract proc
+	//if(extract_proc(buffer, charset, &newline_index, &height) == 0)
+	//	return (-1);
+
 	if (extract_charset(charset, buffer, newline_index) == -1
 			|| extract_height(buffer, newline_index, &height) == -1)
 	{
@@ -92,9 +105,7 @@ int		stdin_case(void)
 		exit(0);
 	}
 	free(buffer);
-	//Read Map Data & Expand Buffer
-	buffer_size = 2;
-	buffer = (char*)malloc(buffer_size);
+	buffer_alloc(buffer, &buffer_size);
 	buffer = read_line(buffer, &buffer_size, &newline_index);
 	map_buff = gen_charmap(newline_index, height);
 	if (map_cpy(map_buff, buffer, newline_index, height) == -1)
@@ -104,10 +115,7 @@ int		stdin_case(void)
 		ft_putstr("map error\n");
 		exit(0);
 	}
-
-
-
-	
-
+	pts = (t_point*)malloc(sizeof(t_point) * 3);
+	after_read(mapbuff, charset, pts);
 	return (0);
 }
