@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/14 18:16:47 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/14 18:19:22 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		extract_height(char *dest_buffer, int newline_index, int *height)
 	//height numeric check
 	if (setcheck(dest_buffer) == -1)
 		return (-1);
+	//height value check
 	*height = ft_atoi(dest_buffer);
 	if (*height <= 0)
 		return (-1);
@@ -86,7 +87,7 @@ int		stdin_case(void)
 	buffer = read_line(buffer, &buffer_size, &newline_index);
 	map_buff = gen_charmap(newline_index, height);
 	map_cpy(map_buff, buffer, newline_index, height);
-	
+
 
 
 	
