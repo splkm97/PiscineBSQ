@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/14 18:48:21 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/14 19:06:00 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,18 @@ int		map_cpy(char **dest_buf, char* src_buf, int width, int height)
 	int buffer_size;
 	int map_width;
 
+	height--;
 	cur_index = 0;
 	ft_strncpy(dest_buf[cur_index++], src_buf, width);
 	while (height--)
 	{
 		free(src_buf);
-		buffer_size = 2;
+		buffer_size = width;
 		map_width = 0;
 		src_buf = (char*)malloc(buffer_size);
 		src_buf = read_line(src_buf, &buffer_size, &map_width);
+		if (buffer_size != map_width)
+			return (-1);
 		ft_strncpy(dest_buf[cur_index++], src_buf, map_width);
 	}
 	return (0);
@@ -94,7 +97,13 @@ int		stdin_case(void)
 	buffer = (char*)malloc(buffer_size);
 	buffer = read_line(buffer, &buffer_size, &newline_index);
 	map_buff = gen_charmap(newline_index, height);
-	map_cpy(map_buff, buffer, newline_index, height);
+	if (map_cpy(map_buff, buffer, newline_index, height) == -1)
+	{
+		free_charmap(map_buff, height);
+		free(buffer);
+		ft_putstr("map error\n");
+		exit(0);
+	}
 
 
 
