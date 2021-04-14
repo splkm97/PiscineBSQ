@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 16:37:33 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 18:51:51 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 19:29:13 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ void	cal_minmax(int **parsed_map, t_point *pts)
 				max_val = parsed_map[y][x];
 				update(&max_point, x, y);
 			}
-		}//TODO add full count case process
+		} // TODO add full count case process
 	}
 	update(&pts[1], max_point.x - max_val, max_point.y - max_val);
 	update(&pts[2], max_point.x, max_point.y);
+	if (max_val == 0)
+		update(&pts[1], -1, -1);
 }
