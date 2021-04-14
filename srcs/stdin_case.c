@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/14 17:27:17 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/14 18:08:31 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,22 @@ int		extract_height(char *dest_buffer, int newline_index, int *height)
 	if (setcheck(dest_buffer) == -1)
 		return (-1);
 	*height = ft_atoi(dest_buffer);
+	if (*height <= 0)
+		return (-1);
 	return (0);
 }
 
+int		map_cpy(char **dest_buf, char* src_buf, int width, int height)
+{
+	int cur_index;
 
+	cur_index = 0;
+	strncpy(dest_buf[cur_index++], src_buf, width);
+	while (cur_index < height)
+	{
+		cur_index++;
+	}
+}
 
 int		stdin_case(void)
 {
@@ -53,22 +65,28 @@ int		stdin_case(void)
 	char	charset[3];
 	int		newline_index;
 	int		height;
-	char	**buff;
+	char	**map_buff;
 
 	buffer_size = 2;
 	buffer = (char*)malloc(buffer_size);
-	//Expand buffer
+	//Read Command Line & Expand Buffer
 	buffer = read_line(buffer, &buffer_size, &newline_index);
-	//Extract charset / Extract height
+	//Extract Charset / Extract Height
 	if (extract_charset(charset, buffer, newline_index) == -1
 			|| extract_height(buffer, newline_index, &height) == -1)
 	{
+		free(buffer);
 		ft_putstr("map error\n");
 		exit(0);
-	}	
-	buff = get_charmap(newline_index, height);
+	}
+	free(buffer);
+	//Read Map Data & Expand Buffer
+	buff_size = 2;
+	buffer = (char*)malloc(buffer_size);
+	buffer = read_line(buffer, &buff_size, &newline_index);
+	map_buff = gen_charmap(newline_index, height);
+	map_cpy(map_buff, buffer, newline_index, height);
 	
-
 
 
 	
