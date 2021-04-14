@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/14 17:03:17 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/14 17:27:17 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int		extract_height(char *dest_buffer, int newline_index, int *height)
 	return (0);
 }
 
+
+
 int		stdin_case(void)
 {
 	char	*buffer;
@@ -51,13 +53,12 @@ int		stdin_case(void)
 	char	charset[3];
 	int		newline_index;
 	int		height;
+	char	**buff;
 
 	buffer_size = 2;
 	buffer = (char*)malloc(buffer_size);
-	
 	//Expand buffer
 	buffer = read_line(buffer, &buffer_size, &newline_index);
-
 	//Extract charset / Extract height
 	if (extract_charset(charset, buffer, newline_index) == -1
 			|| extract_height(buffer, newline_index, &height) == -1)
@@ -65,7 +66,8 @@ int		stdin_case(void)
 		ft_putstr("map error\n");
 		exit(0);
 	}	
-		
+	buff = get_charmap(newline_index, height);
+	
 
 
 
