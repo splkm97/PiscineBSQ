@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 23:19:51 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 19:46:13 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/15 00:41:01 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		main(int argc, char **argv)
 	t_point	*pts;
 
 	if (argc == 1)
-		stdin_case();
+		stdin_case(charset, pts);
 	i = 0;
 	while (++i < argc)
 	{
