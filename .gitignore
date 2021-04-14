@@ -1,0 +1,6 @@
+bsq
+*.o
+*.out
+*.map
+time_test.c
+test/*
