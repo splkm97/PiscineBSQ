@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 22:28:00 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/14 19:29:47 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 19:57:20 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	fill_map_char(char **raw_map, t_point *pts, char *charset)
 		raw_map[pts[1].y][pts[1].x] = charset[2];
 	if (pts[1].x == -1)
 		return ;
-	y = pts[1].y;
+	y = pts[1].y - 1;
 	while (++y <= pts[2].y)
 	{
-		x = pts[1].x;
+		x = pts[1].x - 1;
 		while (++x <= pts[2].x)
 			raw_map[y][x] = charset[2];
 	}

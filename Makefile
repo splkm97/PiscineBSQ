@@ -6,7 +6,7 @@
 #    By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/10 17:53:20 by kalee             #+#    #+#              #
-#    Updated: 2021/04/14 17:26:36 by kalee            ###   ########.fr        #
+#    Updated: 2021/04/14 20:20:03 by kalee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,6 @@ TARGET = bsq
 SOURCES = $(wildcard $(SRCDIR)/*.c)
 OBJECTS = $(SOURCES:.c=.o)
 
-TESTSRC = $(wildcard $(SRCDIR)/*.c)
-TESTOBJ = $(TESTSRC:.c=.o)
-
 all: $(TARGET)
 
 %.o: %.c
@@ -31,9 +28,6 @@ all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $^
-
-$(TEST): $(TESTOBJ)
-	$(CC) $(CFLSGS) -o $@ $^
 
 clean:
 	rm -f $(OBJECTS)
