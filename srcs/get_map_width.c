@@ -6,14 +6,11 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 05:24:36 by alee              #+#    #+#             */
-/*   Updated: 2021/04/14 05:33:03 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/14 18:12:42 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
+#include "ft_bsq_essential.h"
 
 int		is_newline(char c)
 {
@@ -24,24 +21,12 @@ int		is_newline(char c)
 
 int		get_map_width(int fd, int idx)
 {
-	char	buffer[1024];	//TODO: we need dynamic buffer or smthing
-	int		cur_index;
-	int		read_count;
-	int		width_count;
+	char	*buffer;
+	int		width;
+	int		size;
 
-	cur_index = 0;
-	read_count = idx / sizeof(buffer);
-	while (read_count--)
-		read(fd, buffer, sizeof(buffer));
-	read(fd, buffer, sizeof(buffer));
-	while (*(buffer + cur_index) != '\n')
-		cur_index++;
-	width_count = 0;
-	cur_index++;
-	while (is_newline(*(buffer + cur_index)) == 0)
-	{
-		cur_index++;
-		width_count++;
-	}
-	return (width_count);
+	size = 2;
+	buffer = (char *)malloc(size * sizeof(char));
+	buffer = read_line(buffer, &size, &width);
+	return (width);
 }
