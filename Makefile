@@ -6,18 +6,17 @@
 #    By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/10 17:53:20 by kalee             #+#    #+#              #
-#    Updated: 2021/04/13 01:19:37 by kalee            ###   ########.fr        #
+#    Updated: 2021/04/14 17:26:36 by kalee            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = 
+CFLAGS =
 
 SRCDIR = srcs
 INCDIR = includes
 
-TARGET = bsq.out
-TEST = test.out
+TARGET = bsq
 
 SOURCES = $(wildcard $(SRCDIR)/*.c)
 OBJECTS = $(SOURCES:.c=.o)
