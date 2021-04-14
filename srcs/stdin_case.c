@@ -6,7 +6,7 @@
 /*   By: alee <alee@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 03:56:17 by alee              #+#    #+#             */
-/*   Updated: 2021/04/14 18:19:22 by alee             ###   ########.fr       */
+/*   Updated: 2021/04/14 18:48:21 by alee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,21 @@ int		extract_height(char *dest_buffer, int newline_index, int *height)
 int		map_cpy(char **dest_buf, char* src_buf, int width, int height)
 {
 	int cur_index;
+	int buffer_size;
+	int map_width;
 
 	cur_index = 0;
 	ft_strncpy(dest_buf[cur_index++], src_buf, width);
-	while (cur_index < height)
-	{		
-		cur_index++;
+	while (height--)
+	{
+		free(src_buf);
+		buffer_size = 2;
+		map_width = 0;
+		src_buf = (char*)malloc(buffer_size);
+		src_buf = read_line(src_buf, &buffer_size, &map_width);
+		ft_strncpy(dest_buf[cur_index++], src_buf, map_width);
 	}
+	return (0);
 }
 
 int		stdin_case(void)
