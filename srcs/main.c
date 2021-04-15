@@ -6,7 +6,7 @@
 /*   By: kalee <kalee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 23:19:51 by kalee             #+#    #+#             */
-/*   Updated: 2021/04/15 05:17:23 by kalee            ###   ########.fr       */
+/*   Updated: 2021/04/15 12:00:32 by kalee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int		main(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 	{
+		if (i != 1)
+			write(1, "\n", 1);
 		flag = io_process(argv[i], charset, pts);
 		if (flag == -1)
 		{
