@@ -70,14 +70,12 @@ int		main(int argc, char **argv)
 	{
 		if (i != 1)
 			write(1, "\n", 1);
-		flag = io_process(argv[i], charset, pts);
-		if (flag == -1)
+		if (io_process(argv[i], charset, pts) == -1)
 		{
 			ft_putstr("map error\n");
 			continue;
 		}
-		flag = bsq_logic(argv[i], charset, pts);
-		if (flag == -1)
+		if (flag = bsq_logic(argv[i], charset, pts) == -1)
 		{
 			ft_putstr("map error\n");
 			continue;
